@@ -17,24 +17,35 @@ All colors MUST be HSL.
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* MrDgn Entertainment brand colors */
+    --primary: 0 84% 55%; /* MrDgn red */
+    --primary-foreground: 0 0% 100%;
+    --primary-light: 0 84% 70%;
+    --primary-dark: 0 84% 45%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 222.2 84% 4.9%;
 
-    --muted: 210 40% 96.1%;
+    --muted: 0 0% 96%;
     --muted-foreground: 215.4 16.3% 46.9%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 0 84% 55%;
+    --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --ring: 0 84% 55%;
+
+    /* Custom brand gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(0 84% 55%), hsl(0 84% 45%));
+    --gradient-hero: linear-gradient(135deg, hsl(0 84% 55% / 0.1), hsl(0 84% 45% / 0.05));
+    
+    /* Custom shadows */
+    --shadow-brand: 0 10px 30px -10px hsl(0 84% 55% / 0.3);
+    --shadow-soft: 0 2px 8px -2px hsl(0 0% 0% / 0.1);
 
     --radius: 0.5rem;
 
