@@ -10,6 +10,7 @@ import { Switch } from '@/components/ui/switch';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { ArrowLeft, Save } from 'lucide-react';
+import { ImageUpload } from '@/components/ImageUpload';
 
 const BlogEdit = () => {
   const { id } = useParams();
@@ -144,8 +145,8 @@ const BlogEdit = () => {
   }
 
   return (
-    <div className="p-6 space-y-6">
-      <div className="flex items-center gap-4">
+    <div className="p-4 sm:p-6 space-y-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
         <Button variant="outline" onClick={() => navigate('/blog')}>
           <ArrowLeft className="h-4 w-4 mr-2" />
           Back to Blog
@@ -156,8 +157,8 @@ const BlogEdit = () => {
       </div>
 
       <form onSubmit={handleSubmit} className="space-y-6">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-          <div className="lg:col-span-2 space-y-6">
+        <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+          <div className="xl:col-span-2 space-y-6">
             <Card>
               <CardHeader>
                 <CardTitle>Content</CardTitle>
@@ -240,12 +241,12 @@ const BlogEdit = () => {
                 </div>
 
                 <div>
-                  <Label htmlFor="featured_image_url">Featured Image URL</Label>
-                  <Input
-                    id="featured_image_url"
+                  <Label>Featured Image</Label>
+                  <ImageUpload
                     value={formData.featured_image_url}
-                    onChange={(e) => setFormData(prev => ({ ...prev, featured_image_url: e.target.value }))}
-                    placeholder="https://example.com/image.jpg"
+                    onChange={(url) => setFormData(prev => ({ ...prev, featured_image_url: url }))}
+                    bucket="blog-images"
+                    placeholder="Upload featured image or enter URL"
                   />
                 </div>
               </CardContent>

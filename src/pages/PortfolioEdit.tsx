@@ -11,6 +11,7 @@ import { Switch } from "@/components/ui/switch";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { ArrowLeft } from "lucide-react";
+import { ImageUpload } from '@/components/ImageUpload';
 
 const PortfolioEdit = () => {
   const { id } = useParams();
@@ -135,8 +136,8 @@ const PortfolioEdit = () => {
   }
 
   return (
-    <div className="p-6 max-w-4xl mx-auto space-y-6">
-      <div className="flex items-center gap-4">
+    <div className="p-4 sm:p-6 max-w-4xl mx-auto space-y-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
         <Button variant="outline" size="icon" onClick={() => navigate('/portfolio')}>
           <ArrowLeft className="h-4 w-4" />
         </Button>
@@ -157,7 +158,7 @@ const PortfolioEdit = () => {
             <CardDescription>The fundamental details of your portfolio item</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="title">Title</Label>
                 <Input
@@ -191,7 +192,7 @@ const PortfolioEdit = () => {
               />
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
               <div className="space-y-2">
                 <Label htmlFor="category">Category</Label>
                 <Select value={formData.category} onValueChange={(value) => handleInputChange('category', value)}>
@@ -241,12 +242,12 @@ const PortfolioEdit = () => {
             </div>
 
             <div className="space-y-2">
-              <Label htmlFor="featured_image_url">Featured Image URL</Label>
-              <Input
-                id="featured_image_url"
+              <Label>Featured Image</Label>
+              <ImageUpload
                 value={formData.featured_image_url}
-                onChange={(e) => handleInputChange('featured_image_url', e.target.value)}
-                placeholder="https://example.com/image.jpg"
+                onChange={(url) => handleInputChange('featured_image_url', url)}
+                bucket="portfolio-images"
+                placeholder="Upload featured image or enter URL"
               />
             </div>
 
@@ -292,7 +293,7 @@ const PortfolioEdit = () => {
           </CardContent>
         </Card>
 
-        <div className="flex gap-4">
+        <div className="flex flex-col sm:flex-row gap-4">
           <Button type="submit" disabled={saveMutation.isPending}>
             {saveMutation.isPending ? 'Saving...' : (isEditing ? 'Update Item' : 'Create Item')}
           </Button>

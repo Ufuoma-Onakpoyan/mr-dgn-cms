@@ -47,7 +47,7 @@ export function AppSidebar() {
   return (
     <Sidebar collapsible="offcanvas">
       <SidebarContent>
-        <div className="p-4">
+        <div className="p-3 sm:p-4">
           <div className="flex items-center gap-2">
             <img 
               src="/lovable-uploads/65b6d2f7-e96d-44d6-885f-198109c566d2.png" 
@@ -83,7 +83,7 @@ export function AppSidebar() {
           </SidebarGroupContent>
         </SidebarGroup>
 
-        <div className="mt-auto p-4">
+        <div className="mt-auto p-3 sm:p-4">
           <Button
             variant="outline"
             size="default"
