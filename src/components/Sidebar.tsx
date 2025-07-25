@@ -45,7 +45,7 @@ export function AppSidebar() {
   };
 
   return (
-    <Sidebar collapsible="icon">
+    <Sidebar collapsible="offcanvas">
       <SidebarContent>
         <div className="p-4">
           <div className="flex items-center gap-2">
@@ -54,12 +54,10 @@ export function AppSidebar() {
               alt="MrDgn" 
               className="h-8 w-8"
             />
-            {!isCollapsed && (
-              <div>
-                <h2 className="font-bold text-foreground">MrDgn</h2>
-                <p className="text-xs text-muted-foreground">Admin Panel</p>
-              </div>
-            )}
+            <div>
+              <h2 className="font-bold text-sidebar-foreground">MrDgn</h2>
+              <p className="text-xs text-sidebar-foreground/70">Admin Panel</p>
+            </div>
           </div>
         </div>
 
@@ -76,7 +74,7 @@ export function AppSidebar() {
                       className={getNavCls}
                     >
                       <item.icon className="h-4 w-4" />
-                      {!isCollapsed && <span>{item.title}</span>}
+                      <span className="text-sidebar-foreground">{item.title}</span>
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -88,12 +86,12 @@ export function AppSidebar() {
         <div className="mt-auto p-4">
           <Button
             variant="outline"
-            size={isCollapsed ? "icon" : "default"}
+            size="default"
             onClick={handleSignOut}
             className="w-full"
           >
             <LogOut className="h-4 w-4" />
-            {!isCollapsed && <span className="ml-2">Sign Out</span>}
+            <span className="ml-2 text-sidebar-foreground">Sign Out</span>
           </Button>
         </div>
       </SidebarContent>
