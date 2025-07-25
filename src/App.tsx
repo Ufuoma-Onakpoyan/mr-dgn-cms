@@ -10,6 +10,7 @@ import Dashboard from "./pages/Dashboard";
 import BlogList from "./pages/BlogList";
 import BlogEdit from "./pages/BlogEdit";
 import PortfolioList from "./pages/PortfolioList";
+import PortfolioEdit from "./pages/PortfolioEdit";
 import Login from "./pages/Login";
 import NotFound from "./pages/NotFound";
 
@@ -56,6 +57,20 @@ const App = () => (
               <ProtectedRoute>
                 <Layout>
                   <PortfolioList />
+                </Layout>
+              </ProtectedRoute>
+            } />
+            <Route path="/portfolio/new" element={
+              <ProtectedRoute>
+                <Layout>
+                  <PortfolioEdit />
+                </Layout>
+              </ProtectedRoute>
+            } />
+            <Route path="/portfolio/edit/:id" element={
+              <ProtectedRoute>
+                <Layout>
+                  <PortfolioEdit />
                 </Layout>
               </ProtectedRoute>
             } />
