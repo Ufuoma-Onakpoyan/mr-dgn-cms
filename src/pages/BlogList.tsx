@@ -5,6 +5,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useToast } from '@/hooks/use-toast';
 import { 
   Edit, 
@@ -13,9 +14,11 @@ import {
   Search, 
   Eye,
   Calendar,
-  User
+  User,
+  BarChart3
 } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { ViewAnalytics } from '@/components/ViewAnalytics';
 
 const BlogList = () => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -102,8 +105,8 @@ const BlogList = () => {
     <div className="p-4 sm:p-6 space-y-6">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Blog Posts</h1>
-          <p className="text-muted-foreground">Manage your blog content</p>
+          <h1 className="text-3xl font-bold text-foreground">Blog Management</h1>
+          <p className="text-muted-foreground">Manage content and view analytics across all connected websites</p>
         </div>
         <Link to="/blog/new">
           <Button className="flex items-center gap-2">
@@ -113,17 +116,27 @@ const BlogList = () => {
         </Link>
       </div>
 
-      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
-        <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-          <Input
-            placeholder="Search posts..."
-            value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)}
-            className="pl-10"
-          />
-        </div>
-      </div>
+      <Tabs defaultValue="posts" className="space-y-6">
+        <TabsList>
+          <TabsTrigger value="posts">Blog Posts</TabsTrigger>
+          <TabsTrigger value="analytics">
+            <BarChart3 className="mr-2 h-4 w-4" />
+            Analytics
+          </TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="posts" className="space-y-6">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">
+            <div className="relative flex-1 max-w-md">
+              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+              <Input
+                placeholder="Search posts..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="pl-10"
+              />
+            </div>
+          </div>
 
       <div className="grid gap-6">
         {filteredPosts?.length === 0 ? (
@@ -205,7 +218,13 @@ const BlogList = () => {
             </Card>
           ))
         )}
-      </div>
+        </div>
+        </TabsContent>
+
+        <TabsContent value="analytics">
+          <ViewAnalytics />
+        </TabsContent>
+      </Tabs>
     </div>
   );
 };
